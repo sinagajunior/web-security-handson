@@ -1,0 +1,29 @@
+# Normalize line endings
+* text=auto
+
+# Keep shell scripts as LF (required for execution on Linux/Codespaces)
+mvnw text eol=lf
+*.sh text eol=lf
+
+# Windows scripts use CRLF
+mvnw.cmd text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Java and config files — normalize
+*.java text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.xml text eol=lf
+*.sql text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.properties text eol=lf
+
+# Binary files — no line ending conversion
+*.jar binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.pdf binary
+*.pptx binary

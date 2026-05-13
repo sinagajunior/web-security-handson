@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions
+    xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+    <!--
+        Add suppressions ONLY for verified false positives.
+        Always include justification and expiry date.
+
+        Example:
+        <suppress until="2025-12-31Z">
+            <notes>False positive: library X is not used in the vulnerable execution path</notes>
+            <cve>CVE-XXXX-XXXXX</cve>
+        </suppress>
+    -->
+</suppressions>

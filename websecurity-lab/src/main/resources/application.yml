@@ -1,0 +1,83 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: websecurity-lab
+
+  datasource:
+    url: jdbc:h2:mem:securitylab;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  sql:
+    init:
+      mode: always
+
+  security:
+    user:
+      name: admin
+      password: admin123
+
+logging:
+  level:
+    com.lab.security: DEBUG
+    org.springframework.security: INFO
+    org.hibernate.SQL: DEBUG
+
+app:
+  cors:
+    allowed-origins:
+      - http://localhost:3000
+      - http://localhost:4200
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: false
+
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+  sql:
+    init:
+      mode: always
+
+logging:
+  level:
+    org.hibernate.SQL: WARN
+    org.springframework.security: WARN
+
+app:
+  cors:
+    allowed-origins:
+      - http://localhost:3000
+      - http://localhost:4200
