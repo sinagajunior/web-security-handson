@@ -106,11 +106,26 @@
         </dependency>
         -->
 
-        <!-- MODULE 2 SECURE FIX: patched log4j version -->
+        <!--
+            MODULE 2 SECURE FIX: patched log4j version.
+            We exclude log4j-to-slf4j (the SLF4J bridge shipped by spring-boot-starter-logging)
+            to avoid a Log4j2 initialization conflict: having both log4j-core and the
+            log4j-to-slf4j bridge on the classpath causes Log4j2 to fail during context startup.
+        -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.21.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-to-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- jackson-databind: version managed by Spring Boot BOM (no manual pinning) -->
     </dependencies>
