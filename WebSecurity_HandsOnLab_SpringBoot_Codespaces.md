@@ -4,7 +4,6 @@
 > **Target Audience:** Developer / Mahasiswa Tingkat Menengah
 > **Stack:** Spring Boot 3.2+, Java 21, Thymeleaf, Bootstrap Admin, H2 Database, Spring Security
 > **Platform Lab:** GitHub Codespaces (cloud-based, browser-based IDE)
-> **Estimasi Durasi:** 8–10 Jam (4 Modul Lab)
 
 ---
 
@@ -24,7 +23,7 @@
 
 ## PRE-REQUISITE: Persiapan Akun & Environment GitHub
 
-> ⏱️ **Estimasi waktu bagian ini: 30–45 menit**
+
 > Selesaikan bagian ini SEBELUM memulai Modul Lab apapun!
 
 ---
