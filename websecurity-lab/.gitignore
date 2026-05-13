@@ -2,12 +2,8 @@
 # Maven
 # ===========================
 target/
-!.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
-# Maven wrapper — keep the scripts and properties, ignore only the binary jar
-.mvn/wrapper/maven-wrapper.jar
 
 # ===========================
 # IDE — IntelliJ IDEA
@@ -92,3 +88,6 @@ log/
 *.zip
 *.tar.gz
 *.rar
+
+# Maven wrapper jar must be committed so Codespaces/CI can bootstrap without internet
+!.mvn/wrapper/maven-wrapper.jar
