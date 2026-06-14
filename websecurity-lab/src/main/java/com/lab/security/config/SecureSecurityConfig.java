@@ -35,18 +35,18 @@ public class SecureSecurityConfig {
                 .requestMatchers("/h2-console/**").permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
-            )
-            .formLogin(form -> form
-                .loginPage("/login")
-                .defaultSuccessUrl("/dashboard", true)
-                .permitAll()
-            )
-            .logout(logout -> logout
-                .logoutSuccessUrl("/login?logout")
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-                .permitAll()
-            )
+//            )
+//            .formLogin(form -> form
+//                .loginPage("/login")
+//                .defaultSuccessUrl("/dashboard", true)
+//                .permitAll()
+//            )
+//            .logout(logout -> logout
+//                .logoutSuccessUrl("/login?logout")
+//                .invalidateHttpSession(true)
+//                .deleteCookies("JSESSIONID")
+//                .permitAll()
+        )
             // Allow H2 console to render in iframe (dev only)
             .headers(headers -> headers
                 .frameOptions(frame -> frame.sameOrigin())

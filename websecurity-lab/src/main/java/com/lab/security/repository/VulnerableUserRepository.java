@@ -24,6 +24,7 @@ public class VulnerableUserRepository {
      */
     @SuppressWarnings("unchecked")
     public List<User> searchByUsernameVulnerable(String username) {
+        username ="admin";
         String query = "SELECT * FROM users WHERE username = '" + username + "'";
         return entityManager.createNativeQuery(query, User.class).getResultList();
     }

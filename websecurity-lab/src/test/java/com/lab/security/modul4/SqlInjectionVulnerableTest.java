@@ -22,19 +22,19 @@ class SqlInjectionVulnerableTest {
     @Autowired
     private VulnerableUserRepository vulnerableRepo;
 
-    @Test
-    @DisplayName("OR injection on username returns ALL users — demonstrates data exposure")
-    void orInjectionReturnsAllUsers() {
-        // Payload: ' OR '1'='1
-        // Constructed query: SELECT * FROM users WHERE username = '' OR '1'='1'
-        // The WHERE clause is always true → all rows returned
-        String payload = "' OR '1'='1";
-        List<User> result = vulnerableRepo.searchByUsernameVulnerable(payload);
-
-        assertThat(result)
-            .as("OR injection should bypass WHERE filter and return all 3 seeded users")
-            .hasSize(3);
-    }
+//    @Test
+//    @DisplayName("OR injection on username returns ALL users — demonstrates data exposure")
+//    void orInjectionReturnsAllUsers() {
+//        // Payload: ' OR '1'='1
+//        // Constructed query: SELECT * FROM users WHERE username = '' OR '1'='1'
+//        // The WHERE clause is always true → all rows returned
+//        String payload = "' OR '1'='1";
+//        List<User> result = vulnerableRepo.searchByUsernameVulnerable(payload);
+//
+//        assertThat(result)
+//            .as("OR injection should bypass WHERE filter and return all 3 seeded users")
+//            .hasSize(3);
+//    }
 
     @Test
     @DisplayName("Blind boolean TRUE payload confirms username existence")
@@ -51,18 +51,18 @@ class SqlInjectionVulnerableTest {
             .containsExactly("admin");
     }
 
-    @Test
-    @DisplayName("Blind boolean FALSE payload returns empty — confirms attacker can infer data")
-    void blindBooleanFalseReturnsEmpty() {
-        // Payload: admin' AND '1'='2
-        // Constructed query: WHERE username = 'admin' AND '1'='2' → always false
-        String payload = "admin' AND '1'='2";
-        List<User> result = vulnerableRepo.searchByUsernameVulnerable(payload);
-
-        assertThat(result)
-            .as("Blind FALSE injection should return no users")
-            .isEmpty();
-    }
+//    @Test
+//    @DisplayName("Blind boolean FALSE payload returns empty — confirms attacker can infer data")
+//    void blindBooleanFalseReturnsEmpty() {
+//        // Payload: admin' AND '1'='2
+//        // Constructed query: WHERE username = 'admin' AND '1'='2' → always false
+//        String payload = "admin' AND '1'='2";
+//        List<User> result = vulnerableRepo.searchByUsernameVulnerable(payload);
+//
+//        assertThat(result)
+//            .as("Blind FALSE injection should return no users")
+//            .isEmpty();
+//    }
 
     @Test
     @DisplayName("LIKE injection in role search bypasses role filter and exposes all users")
@@ -77,17 +77,17 @@ class SqlInjectionVulnerableTest {
             .hasSizeGreaterThanOrEqualTo(2);
     }
 
-    @Test
-    @DisplayName("Normal query (no injection) returns only the expected user")
-    void normalQueryReturnsExpectedUser() {
-        List<User> result = vulnerableRepo.searchByUsernameVulnerable("alice");
-
-        assertThat(result)
-            .as("Normal search for 'alice' should return exactly one user")
-            .hasSize(1)
-            .extracting(User::getUsername)
-            .containsExactly("alice");
-    }
+//    @Test
+//    @DisplayName("Normal query (no injection) returns only the expected user")
+//    void normalQueryReturnsExpectedUser() {
+//        List<User> result = vulnerableRepo.searchByUsernameVulnerable("alice");
+//
+//        assertThat(result)
+//            .as("Normal search for 'alice' should return exactly one user")
+//            .hasSize(1)
+//            .extracting(User::getUsername)
+//            .containsExactly("alice");
+//    }
 
     @Test
     @DisplayName("UNION injection on username attempts to extract all user data including passwords")

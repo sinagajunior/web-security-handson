@@ -6,7 +6,7 @@ spring:
     name: websecurity-lab
 
   datasource:
-    url: jdbc:h2:mem:securitylab;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:securitylab;DB_CLOSE_DELAY=-1;NON_KEYWORDS=KEY,VALUE
     driver-class-name: org.h2.Driver
     username: sa
     password:
@@ -17,7 +17,7 @@ spring:
       path: /h2-console
 
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    #database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create-drop
     defer-datasource-initialization: true
@@ -29,6 +29,8 @@ spring:
   sql:
     init:
       mode: always
+      platform: h2
+      data-locations: ["classpath:data.sql"]
 
   security:
     user:
@@ -38,8 +40,10 @@ spring:
 logging:
   level:
     com.lab.security: DEBUG
-    org.springframework.security: INFO
+    org.springframework.security: DEBUG
     org.hibernate.SQL: DEBUG
+    org.springframework.jdbc.datasource.init: DEBUG
+
 
 app:
   cors:
@@ -51,19 +55,24 @@ app:
 spring:
   config:
     activate:
-      on-profile: test
+      on-profile: vulnerable
 
   datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:securitylab;DB_CLOSE_DELAY=-1;NON_KEYWORDS=KEY,VALUE
+    driver-class-name: org.h2.Driver
     username: sa
     password:
 
   h2:
     console:
-      enabled: false
+      enabled: true
+      path: /h2-console
 
   jpa:
-    show-sql: false
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
     properties:
       hibernate:
         format_sql: false
@@ -71,6 +80,8 @@ spring:
   sql:
     init:
       mode: always
+      platform: h2
+      data-locations: ["classpath:data.sql"]
 
 logging:
   level:
