@@ -789,7 +789,8 @@ mvn dependency:resolve
 mvn compile
 
 # Jalankan aplikasi
-mvn spring-boot:run
+mvn spring-boot:run --spring.profiles.active=vulnerable
+**tambahkan profile 
 ```
 
 **Akses Aplikasi dari Codespaces:**
