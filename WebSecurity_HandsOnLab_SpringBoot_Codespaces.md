@@ -85,7 +85,7 @@ Keuntungan untuk Lab ini:
 
 **Langkah 1: Fork Repository**
 
-1. Buka URL repository template yang diberikan dosen (contoh: `https://github.com/dosen/websecurity-lab-template`)
+1. Buka URL repository template yang diberikan dosen https://github.com/sinagajunior/web-security-handson
 2. Klik tombol **"Fork"** di pojok kanan atas halaman
 3. Pada dialog fork:
    - **Owner:** Pilih username kamu sendiri
